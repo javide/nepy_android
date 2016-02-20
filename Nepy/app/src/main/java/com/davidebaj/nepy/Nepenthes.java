@@ -1,7 +1,14 @@
-package com.davidebaj.nepy;
+/*
+ *  ---------------------------------------------------------------------------
+ *  Copyright (C) 2016, Davide Baj - All Rights Reserved
+ *
+ *  Project name: Nepy
+ *  Filename: Nepenthes.java
+ *  Author: Davide Baj
+ *  -------------------------------------------------------------------------
+ */
 
-import java.util.HashMap;
-import java.util.Map;
+package com.davidebaj.nepy;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
