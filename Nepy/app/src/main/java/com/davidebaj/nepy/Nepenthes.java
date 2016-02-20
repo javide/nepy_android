@@ -36,7 +36,6 @@ import java.util.Map;
         "regions",
         "pronunciation_1",
         "pronunciation_2",
-        "Species2",
         "range",
         "distribution",
         "altitude",
@@ -62,8 +61,6 @@ public class Nepenthes {
     private String pronunciation1;
     @JsonProperty("pronunciation_2")
     private String pronunciation2;
-    @JsonProperty("Species2")
-    private String Species2;
     @JsonProperty("range")
     private String range;
     @JsonProperty("distribution")
@@ -94,7 +91,6 @@ public class Nepenthes {
      * @param distribution
      * @param pitcherType2
      * @param pronunciation1
-     * @param Species2
      * @param pronunciation2
      */
     public Nepenthes(Integer id, String species, String imgCredit, String imgCredit2, String pitcherType, String pitcherType2, Integer regions, String pronunciation1, String pronunciation2, String Species2, String range, String distribution, String altitude, String fieldNotes) {
@@ -107,7 +103,6 @@ public class Nepenthes {
         this.regions = regions;
         this.pronunciation1 = pronunciation1;
         this.pronunciation2 = pronunciation2;
-        this.Species2 = Species2;
         this.range = range;
         this.distribution = distribution;
         this.altitude = altitude;
@@ -259,22 +254,6 @@ public class Nepenthes {
     }
 
     /**
-     * @return The Species2
-     */
-    @JsonProperty("Species2")
-    public String getSpecies2() {
-        return Species2;
-    }
-
-    /**
-     * @param Species2 The Species2
-     */
-    @JsonProperty("Species2")
-    public void setSpecies2(String Species2) {
-        this.Species2 = Species2;
-    }
-
-    /**
      * @return The range
      */
     @JsonProperty("range")
@@ -355,7 +334,7 @@ public class Nepenthes {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).append(species).append(imgCredit).append(imgCredit2).append(pitcherType).append(pitcherType2).append(regions).append(pronunciation1).append(pronunciation2).append(Species2).append(range).append(distribution).append(altitude).append(fieldNotes).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(id).append(species).append(imgCredit).append(imgCredit2).append(pitcherType).append(pitcherType2).append(regions).append(pronunciation1).append(pronunciation2).append(range).append(distribution).append(altitude).append(fieldNotes).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -367,7 +346,7 @@ public class Nepenthes {
             return false;
         }
         Nepenthes rhs = ((Nepenthes) other);
-        return new EqualsBuilder().append(id, rhs.id).append(species, rhs.species).append(imgCredit, rhs.imgCredit).append(imgCredit2, rhs.imgCredit2).append(pitcherType, rhs.pitcherType).append(pitcherType2, rhs.pitcherType2).append(regions, rhs.regions).append(pronunciation1, rhs.pronunciation1).append(pronunciation2, rhs.pronunciation2).append(Species2, rhs.Species2).append(range, rhs.range).append(distribution, rhs.distribution).append(altitude, rhs.altitude).append(fieldNotes, rhs.fieldNotes).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(id, rhs.id).append(species, rhs.species).append(imgCredit, rhs.imgCredit).append(imgCredit2, rhs.imgCredit2).append(pitcherType, rhs.pitcherType).append(pitcherType2, rhs.pitcherType2).append(regions, rhs.regions).append(pronunciation1, rhs.pronunciation1).append(pronunciation2, rhs.pronunciation2).append(range, rhs.range).append(distribution, rhs.distribution).append(altitude, rhs.altitude).append(fieldNotes, rhs.fieldNotes).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }
