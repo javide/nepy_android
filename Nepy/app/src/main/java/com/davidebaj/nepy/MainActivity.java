@@ -58,11 +58,13 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "Here----------" + Locale.getDefault().getLanguage());
 
-        Resources resources = Resources.getResources(getApplicationContext(), "en");
+        Resources resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
 
         for (Plant plant : resources.getPlantsObj().getPlants()) {
             Log.d(TAG, plant.getSpecies());
         }
+
+        Log.d(TAG, resources.getProperty("nav.ALL_SPECIES"));
     }
 
     @Override

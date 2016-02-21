@@ -21,6 +21,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.Properties;
 
 /**
  * Created by davide on 21/02/16.
@@ -33,9 +35,11 @@ public class Resources {
     private static String languageCode;
     private static Plants plants;
     private static Context context;
+    private static Properties properties;
 
     private Resources() {
         parseNepenthesFile();
+        loadProperties();
     }
 
     public static Resources getResources(Context aContext, String languageCodeStr) {
@@ -74,6 +78,42 @@ public class Resources {
             Log.e(TAG, e.getMessage());
         }
 
+    }
+
+    private static void loadProperties() {
+
+        Log.d(TAG, "Loading translations");
+        properties = new Properties();
+
+        try {
+            AssetManager assetManager = context.getAssets();
+            InputStream inputStream = assetManager.open(languageCode + "/tx.properties");
+            properties.load(inputStream);
+
+            Enumeration propertyNames = properties.propertyNames();
+
+            while (propertyNames.hasMoreElements()) {
+                String propertyName = (String) propertyNames.nextElement();
+                Log.d(TAG, propertyName + " = " + properties.getProperty(propertyName));
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+    public String getProperty(String propertyName) {
+
+        String value = null;
+
+        try {
+            value = properties.getProperty(propertyName).trim();
+        } catch (NullPointerException e) {
+            Log.e("'" + propertyName + "' property not found", e.getMessage());
+            System.exit(1);
+        }
+
+        return value;
     }
 
 }
