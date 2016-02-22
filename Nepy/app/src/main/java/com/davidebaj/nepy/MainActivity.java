@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
+    public static Resources resources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "Here----------" + Locale.getDefault().getLanguage());
 
-        Resources resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
+        resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
 
         for (Plant plant : resources.getPlantsObj().getPlants()) {
             Log.d(TAG, plant.getSpecies());
@@ -81,6 +82,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        // set drawer menu item titles
+        NavigationView nav_draw = (NavigationView) findViewById(R.id.nav_view);
+        nav_draw.getMenu().findItem(R.id.nav_all_species).setTitle(resources.getProperty("nav.ALL_SPECIES"));
+        nav_draw.getMenu().findItem(R.id.nav_by_region).setTitle(resources.getProperty("nav.BY_REGION"));
+        nav_draw.getMenu().findItem(R.id.nav_quiz).setTitle(resources.getProperty("nav.QUIZ"));
+        nav_draw.getMenu().findItem(R.id.nav_about).setTitle(resources.getProperty("nav.ABOUT"));
+
         return true;
     }
 
@@ -105,13 +114,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_all_species) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_by_region) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_quiz) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_share) {
 
