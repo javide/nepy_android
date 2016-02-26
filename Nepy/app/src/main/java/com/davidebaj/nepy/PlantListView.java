@@ -24,12 +24,12 @@ import java.util.List;
 /**
  * Created by davide on 23/02/16.
  */
-public class PlantListViewFragment extends Fragment {
+public class PlantListView extends Fragment {
 
-    private static final String TAG = "PlantListViewFragment";
+    private static final String TAG = "PlantListView";
 
-    public static final PlantListViewFragment newInstance(int id, String message, String region_code) {
-        PlantListViewFragment f = new PlantListViewFragment();
+    public static final PlantListView newInstance(int id, String message, String region_code) {
+        PlantListView f = new PlantListView();
         Bundle bdl = new Bundle(2);
         bdl.putInt("ID", id);
         bdl.putString("MESSAGE", message);

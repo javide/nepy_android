@@ -5,13 +5,12 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal">
 
-<!--    <ImageView
+    <ImageView
         android:id="@+id/my_icon"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="10dp"/>
--->
 
     <TextView
         android:id="@+id/species_textview"

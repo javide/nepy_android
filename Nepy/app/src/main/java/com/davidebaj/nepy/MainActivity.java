@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_all_species) {
             Log.d(TAG, "Selected all species ************");
-            fragment = PlantListViewFragment.newInstance(1, "List Fragment", "ALL");
+            fragment = PlantListView.newInstance(1, "List Fragment", "ALL");
 
         } else if (id == R.id.nav_by_region) {
 
