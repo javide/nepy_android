@@ -21,6 +21,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.davidebaj.nepy.dao.Plant;
+
 import java.io.InputStream;
 
 /**

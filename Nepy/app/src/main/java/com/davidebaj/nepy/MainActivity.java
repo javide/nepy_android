@@ -28,6 +28,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import com.davidebaj.nepy.dao.Plant;
+
 import java.util.List;
 import java.util.Locale;
 

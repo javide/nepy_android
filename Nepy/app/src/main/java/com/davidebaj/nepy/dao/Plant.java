@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.dao;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

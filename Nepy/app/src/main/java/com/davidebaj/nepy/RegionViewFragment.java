@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import com.davidebaj.nepy.dao.Plant;
+
 import java.util.List;
 
 /**
@@ -40,7 +42,7 @@ public class RegionViewFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.region_view, container, false);
+        View view = inflater.inflate(R.layout.regions, container, false);
         view.setClickable(true);
 
         ((Activity) getContext()).setTitle(title);
