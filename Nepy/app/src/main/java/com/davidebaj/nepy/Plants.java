@@ -29,7 +29,7 @@ import java.util.List;
 public class Plants {
 
     @JsonProperty("plants")
-    private List<Plant> plants = new ArrayList<Plant>();
+    private List<Plant> plants = new ArrayList<>();
 
     /**
      *
@@ -39,6 +39,25 @@ public class Plants {
     @JsonProperty("plants")
     public List<Plant> getPlants() {
         return plants;
+    }
+
+    /**
+     * Returns a list of plants in the given regionCode
+     *
+     * @param regionCode - the id corresponding to a geographical region
+     * @return plants
+     */
+    public List<Plant> getPlantsByRegion(String regionCode) {
+
+        List<Plant> plantList = new ArrayList<>();
+
+        for (Plant plant : getPlants()) {
+            if (plant.getRegions().contains(regionCode)) {
+                plantList.add(plant);
+            }
+        }
+
+        return plantList;
     }
 
     /**

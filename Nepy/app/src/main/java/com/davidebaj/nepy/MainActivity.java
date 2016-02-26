@@ -26,7 +26,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
@@ -60,8 +63,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        Log.d(TAG, "Here----------" + Locale.getDefault().getLanguage());
 
         resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
 
@@ -125,10 +126,20 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_all_species) {
             Log.d(TAG, "Selected all species ************");
 
-            fragment = PlantListView.newInstance(resources.getProperty("label.ALL_SPECIES"));
+            List<Plant> plantList = resources.getPlantsObj().getPlants();
+            List<String> speciesNames = new ArrayList<>();
+
+            for (Plant plant : plantList) {
+                speciesNames.add(plant.getSpecies());
+            }
+
+            ArrayAdapter adapter = new PlantArrayAdapter(this, speciesNames.toArray(new String[speciesNames.size()]));
+            fragment = PlantListViewFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
 
         } else if (id == R.id.nav_by_region) {
             Log.d(TAG, "Selected by region ************");
+
+            fragment = RegionViewFragment.newInstance(resources.getProperty("label.REGIONS"));
 
         } else if (id == R.id.nav_quiz) {
             Log.d(TAG, "Selected quiz ************");
@@ -140,6 +151,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else {
+
+            return true;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -148,8 +162,8 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        fragmentTransaction.replace(R.id.content_main, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.replace(R.id.content_main, fragment).commit();
+
         Log.d(TAG, "TRANSACTION COMMITED +++++++++++");
 
         return true;

@@ -13,38 +13,35 @@ package com.davidebaj.nepy;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by davide on 23/02/16.
  */
-public class PlantListView extends Fragment {
+public class PlantListViewFragment extends Fragment {
 
-    private static final String TAG = "PlantListView";
+    private static final String TAG = "PlantListViewFragment";
     private String title;
+    private ArrayAdapter adapter;
 
-    public static final PlantListView newInstance(String title) {
-        PlantListView f = new PlantListView();
+    public static PlantListViewFragment newInstance(String title, ArrayAdapter adapter) {
+
+        PlantListViewFragment f = new PlantListViewFragment();
         f.title = title;
-        Log.d(TAG, "Plant list view instantiated ***********************");
+        f.adapter = adapter;
+
         return f;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "Plant list view creating ***********************");
-        View view = inflater.inflate(R.layout.list_view, container, false);
-        Log.d(TAG, "Plant list view created ***********************");
 
-        Activity activity = (Activity) getContext();
-        activity.setTitle(title);
+        View view = inflater.inflate(R.layout.list_view, container, false);
+        ((Activity) getContext()).setTitle(title);
 
         return view;
     }
@@ -52,17 +49,7 @@ public class PlantListView extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        Log.d(TAG, "Plant list view onViewCreated ***********************");
-        List<Plant> plantList = MainActivity.resources.getPlantsObj().getPlants();
-        List<String> speciesNames = new ArrayList<>();
-
-        for (Plant plant : plantList) {
-            speciesNames.add(plant.getSpecies());
-        }
-
-        PlantArrayAdapter adapter = new PlantArrayAdapter(getActivity(), speciesNames.toArray(new String[speciesNames.size()]));
-
-        ListView listview = (ListView) view.findViewById(R.id.my_listView);
+        ListView listview = (ListView) view.findViewById(R.id.plantListView);
         listview.setAdapter(adapter);
 
         // add listener to each row
@@ -93,9 +80,8 @@ public class PlantListView extends Fragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        Log.d(TAG, "Plant list view onActivityCreated 1 ***********************");
         super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "Plant list view onActivityCreated 2 ***********************");
+
     }
 
 }
