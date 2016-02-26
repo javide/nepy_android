@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -118,13 +117,7 @@ public class RegionViewFragment extends Fragment implements View.OnClickListener
         Log.d(TAG, "Clicked region:" + regionCode);
 
         List<Plant> plantList = MainActivity.resources.getPlantsObj().getPlantsByRegion(regionCode);
-        List<String> speciesNames = new ArrayList<>();
-
-        for (Plant plant : plantList) {
-            speciesNames.add(plant.getSpecies());
-        }
-
-        ArrayAdapter adapter = new PlantArrayAdapter(getContext(), speciesNames.toArray(new String[speciesNames.size()]));
+        ArrayAdapter adapter = new PlantArrayAdapter(getContext(), plantList.toArray(new Plant[plantList.size()]));
         PlantListViewFragment fragment = PlantListViewFragment.newInstance(regionName, adapter);
 
         // FragmentManager.enableDebugLogging(true);

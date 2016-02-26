@@ -28,12 +28,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PlantListViewFragment.Callbacks {
 
     private static final String TAG = "MainActivity";
     public static Resources resources;
@@ -127,13 +126,7 @@ public class MainActivity extends AppCompatActivity
             Log.d(TAG, "Selected all species ************");
 
             List<Plant> plantList = resources.getPlantsObj().getPlants();
-            List<String> speciesNames = new ArrayList<>();
-
-            for (Plant plant : plantList) {
-                speciesNames.add(plant.getSpecies());
-            }
-
-            ArrayAdapter adapter = new PlantArrayAdapter(this, speciesNames.toArray(new String[speciesNames.size()]));
+            ArrayAdapter adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
             fragment = PlantListViewFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
 
         } else if (id == R.id.nav_by_region) {
@@ -167,5 +160,17 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "TRANSACTION COMMITED +++++++++++");
 
         return true;
+    }
+
+    /**
+     * User has clicked on a plant name, so we now display its photo
+     *
+     * @param aPlant - a plant object
+     */
+    public void onListItemSelected(Plant aPlant) {
+
+        Log.d(TAG, "Selected nepenthes = " + aPlant.getSpecies());
+
+        // TODO
     }
 }
