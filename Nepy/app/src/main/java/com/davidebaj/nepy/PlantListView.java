@@ -10,6 +10,7 @@
 
 package com.davidebaj.nepy;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -27,13 +28,11 @@ import java.util.List;
 public class PlantListView extends Fragment {
 
     private static final String TAG = "PlantListView";
+    private String title;
 
-    public static final PlantListView newInstance(int id, String message, String region_code) {
+    public static final PlantListView newInstance(String title) {
         PlantListView f = new PlantListView();
-        Bundle bdl = new Bundle(2);
-        bdl.putInt("ID", id);
-        bdl.putString("MESSAGE", message);
-        f.setArguments(bdl);
+        f.title = title;
         Log.d(TAG, "Plant list view instantiated ***********************");
         return f;
     }
@@ -44,18 +43,16 @@ public class PlantListView extends Fragment {
         View view = inflater.inflate(R.layout.list_view, container, false);
         Log.d(TAG, "Plant list view created ***********************");
 
-
+        Activity activity = (Activity) getContext();
+        activity.setTitle(title);
 
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
         Log.d(TAG, "Plant list view onViewCreated ***********************");
-
-//        ActionBar ab = super.getActivity().getActionBar();
-//        ab.setTitle(region_name);
-
         List<Plant> plantList = MainActivity.resources.getPlantsObj().getPlants();
         List<String> speciesNames = new ArrayList<>();
 

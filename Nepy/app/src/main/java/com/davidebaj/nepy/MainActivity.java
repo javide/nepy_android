@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity
 
         resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
 
-        for (Plant plant : resources.getPlantsObj().getPlants()) {
+      /*  for (Plant plant : resources.getPlantsObj().getPlants()) {
             Log.d(TAG, plant.getSpecies());
         }
+      */
 
-        Log.d(TAG, resources.getProperty("nav.ALL_SPECIES"));
     }
 
     @Override
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity
 
         // set drawer menu item titles
         NavigationView nav_draw = (NavigationView) findViewById(R.id.nav_view);
+        nav_draw.getMenu().findItem(R.id.nav_home).setTitle(resources.getProperty("nav.HOME"));
         nav_draw.getMenu().findItem(R.id.nav_all_species).setTitle(resources.getProperty("nav.ALL_SPECIES"));
         nav_draw.getMenu().findItem(R.id.nav_by_region).setTitle(resources.getProperty("nav.BY_REGION"));
         nav_draw.getMenu().findItem(R.id.nav_quiz).setTitle(resources.getProperty("nav.QUIZ"));
@@ -118,15 +119,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_all_species) {
+        if (id == R.id.nav_home) {
+            Log.d(TAG, "Selected home ************");
+
+        } else if (id == R.id.nav_all_species) {
             Log.d(TAG, "Selected all species ************");
-            fragment = PlantListView.newInstance(1, "List Fragment", "ALL");
+
+            fragment = PlantListView.newInstance(resources.getProperty("label.ALL_SPECIES"));
 
         } else if (id == R.id.nav_by_region) {
+            Log.d(TAG, "Selected by region ************");
 
         } else if (id == R.id.nav_quiz) {
+            Log.d(TAG, "Selected quiz ************");
 
         } else if (id == R.id.nav_about) {
+            Log.d(TAG, "Selected about ************");
 
         } else if (id == R.id.nav_share) {
 
