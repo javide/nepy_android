@@ -13,6 +13,7 @@ package com.davidebaj.nepy.dao;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -37,7 +38,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Plant {
 
     @JsonProperty("id")
-    private Integer id;
+    private String id;
     @JsonProperty("species")
     private String species;
     @JsonProperty("img_credit")
@@ -69,7 +70,7 @@ public class Plant {
      * The id
      */
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -79,7 +80,7 @@ public class Plant {
      * The id
      */
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

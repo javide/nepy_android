@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity
             Log.d(TAG, "Selected all species ************");
 
             List<Plant> plantList = resources.getPlantsObj().getPlants();
-            ArrayAdapter adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
+            ArrayAdapter<Plant> adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
             fragment = PlantListViewFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
 
         } else if (id == R.id.nav_by_region) {
@@ -173,6 +173,13 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "Selected nepenthes = " + aPlant.getSpecies());
 
-        // TODO
+        PagerFragment pagerFragment = PagerFragment.newInstance(aPlant);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.content_main, pagerFragment)
+                .commit();
+
     }
 }
