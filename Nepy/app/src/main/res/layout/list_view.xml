@@ -4,15 +4,17 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
+
     <ListView
         android:id="@+id/my_listView"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".90"
-        android:background="#872e2e"
-        android:divider="#140d0d"
-        android:dividerHeight="@dimen/abc_action_bar_content_inset_material"
-        android:fastScrollAlwaysVisible="false">
-    </ListView>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:divider="#4a4a4a"
+        android:drawSelectorOnTop="false"
+        android:fastScrollAlwaysVisible="true"
+        android:visibility="visible" />
 </LinearLayout>
 
