@@ -10,7 +10,6 @@
 
 package com.davidebaj.nepy;
 
-import android.app.Activity;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -28,8 +27,7 @@ import java.io.InputStream;
 /**
  * Created by davide on 27/02/16.
  */
-public class PhotoFragment extends Fragment {
-    //implements} ViewPager.OnPageChangeListener {
+public class PhotoFragment extends Fragment  {
 
     private static final String TAG = "PhotoFragment";
     private Plant plant;
@@ -48,7 +46,6 @@ public class PhotoFragment extends Fragment {
         Log.d(TAG, " on create view");
 
         View view = inflater.inflate(R.layout.photo, container, false);
-
         return view;
     }
 
@@ -57,14 +54,12 @@ public class PhotoFragment extends Fragment {
 
         Log.d(TAG, " on view created");
 
-        ((Activity) getContext()).setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
-
         String plantFileName = "img/plants/" + getPlantFileName(plant.getSpecies(), Integer.toString(photoNum));
         AssetManager assetManager = getContext().getAssets();
         Log.d(TAG, plantFileName);
         try {
             InputStream inputStream = assetManager.open(plantFileName);
-            ImageView imageView = (ImageView) view.findViewById(R.id.photoView);
+            ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
             imageView.setImageDrawable(Drawable.createFromStream(inputStream, ""));
 
         } catch (Exception e) {
@@ -84,29 +79,8 @@ public class PhotoFragment extends Fragment {
         return parts[1] + "_" + sequenceNumber + ".jpg";
     }
 
- /*   @Override
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Log.d(TAG, "page scrolled");
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        Log.d(TAG, "page selected");
-
-        // TODO: change title
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-        Log.d(TAG, "page scroll state changed");
-    }
-*/
-
 }

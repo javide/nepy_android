@@ -10,10 +10,10 @@
 
 package com.davidebaj.nepy;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,12 +50,12 @@ public class PagerFragment extends Fragment {
         mAdapter  = new ViewPagerAdapter(getChildFragmentManager(), fragments);
 
         View view = inflater.inflate(R.layout.pager, container, false);
-        ((Activity) getContext()).setTitle(plant.getSpecies());
 
         ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(mAdapter);
 
-        Log.d(TAG, "onCreateView for " + plant.getSpecies());
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
 
         return view;
     }
@@ -68,6 +68,5 @@ public class PagerFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 }

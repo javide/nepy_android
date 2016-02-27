@@ -33,7 +33,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        Log.d(TAG, "getCount() ---> " + this.fragments.size());
+     //   Log.d(TAG, "getCount() ---> " + this.fragments.size());
         return this.fragments.size();
     }
 

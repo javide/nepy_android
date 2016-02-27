@@ -182,6 +182,8 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.content_main, pagerFragment)
                 .commit();
 
+
+
 /*
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
