@@ -27,14 +27,14 @@ import java.util.List;
 /**
  * Created by davide on 26/02/16.
  */
-public class RegionViewFragment extends Fragment implements View.OnClickListener {
+public class RegionsFragment extends Fragment implements View.OnClickListener {
 
-    private static final String TAG = "RegionViewFragment";
+    private static final String TAG = "RegionsFragment";
     private String title;
     Button button1, button2, button3, button4, button5, button6, button7;
 
-    public static RegionViewFragment newInstance(String title) {
-        RegionViewFragment f = new RegionViewFragment();
+    public static RegionsFragment newInstance(String title) {
+        RegionsFragment f = new RegionsFragment();
         f.title = title;
         return f;
     }
@@ -120,7 +120,7 @@ public class RegionViewFragment extends Fragment implements View.OnClickListener
 
         List<Plant> plantList = MainActivity.resources.getPlantsObj().getPlantsByRegion(regionCode);
         ArrayAdapter adapter = new PlantArrayAdapter(getContext(), plantList.toArray(new Plant[plantList.size()]));
-        PlantListViewFragment fragment = PlantListViewFragment.newInstance(regionName, adapter);
+        PlantListFragment fragment = PlantListFragment.newInstance(regionName, adapter);
 
         // FragmentManager.enableDebugLogging(true);
         getFragmentManager()

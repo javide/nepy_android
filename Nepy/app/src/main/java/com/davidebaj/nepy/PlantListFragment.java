@@ -27,16 +27,16 @@ import com.davidebaj.nepy.dao.Plant;
 /**
  * Created by davide on 23/02/16.
  */
-public class PlantListViewFragment extends Fragment {
+public class PlantListFragment extends Fragment {
 
-    private static final String TAG = "PlantListViewFragment";
+    private static final String TAG = "PlantListFragment";
     private String title;
     private ArrayAdapter<Plant> adapter;
     private Callbacks mCallbacks;
 
-    public static PlantListViewFragment newInstance(String title, ArrayAdapter<Plant> adapter) {
+    public static PlantListFragment newInstance(String title, ArrayAdapter<Plant> adapter) {
 
-        PlantListViewFragment f = new PlantListViewFragment();
+        PlantListFragment f = new PlantListFragment();
         f.title = title;
         f.adapter = adapter;
 

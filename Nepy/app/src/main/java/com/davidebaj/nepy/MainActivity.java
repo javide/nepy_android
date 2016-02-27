@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PlantListViewFragment.Callbacks {
+        implements NavigationView.OnNavigationItemSelectedListener, PlantListFragment.Callbacks {
 
     private static final String TAG = "MainActivity";
     public static Resources resources;
@@ -129,12 +129,12 @@ public class MainActivity extends AppCompatActivity
 
             List<Plant> plantList = resources.getPlantsObj().getPlants();
             ArrayAdapter<Plant> adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
-            fragment = PlantListViewFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
+            fragment = PlantListFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
 
         } else if (id == R.id.nav_by_region) {
             Log.d(TAG, "Selected by region ************");
 
-            fragment = RegionViewFragment.newInstance(resources.getProperty("label.REGIONS"));
+            fragment = RegionsFragment.newInstance(resources.getProperty("label.REGIONS"));
 
         } else if (id == R.id.nav_quiz) {
             Log.d(TAG, "Selected quiz ************");
