@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     public static Resources resources;
     private Fragment fragment;
+    private PagerFragment pagerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +174,7 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "Selected nepenthes = " + aPlant.getSpecies());
 
-        PagerFragment pagerFragment = PagerFragment.newInstance(aPlant);
+        pagerFragment = PagerFragment.newInstance(aPlant);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -181,5 +182,11 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.content_main, pagerFragment)
                 .commit();
 
+/*
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentTransaction.replace(R.id.content_main, pagerFragment).commit();
+*/
     }
 }

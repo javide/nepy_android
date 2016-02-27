@@ -15,7 +15,6 @@ import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,14 +28,17 @@ import java.io.InputStream;
 /**
  * Created by davide on 27/02/16.
  */
-public class PhotoFragment extends Fragment implements ViewPager.OnPageChangeListener {
+public class PhotoFragment extends Fragment {
+    //implements} ViewPager.OnPageChangeListener {
 
     private static final String TAG = "PhotoFragment";
     private Plant plant;
+    private int photoNum;
 
-    public static PhotoFragment newInstance(Plant aPlant, int position) {
+    public static PhotoFragment newInstance(Plant aPlant, int photoNum) {
         PhotoFragment f = new PhotoFragment();
         f.plant = aPlant;
+        f.photoNum = photoNum;
         return f;
     }
 
@@ -50,13 +52,14 @@ public class PhotoFragment extends Fragment implements ViewPager.OnPageChangeLis
         return view;
     }
 
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         Log.d(TAG, " on view created");
 
         ((Activity) getContext()).setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
 
-        String plantFileName = "img/plants/" + getPlantFileName(plant.getSpecies(), "1");
+        String plantFileName = "img/plants/" + getPlantFileName(plant.getSpecies(), Integer.toString(photoNum));
         AssetManager assetManager = getContext().getAssets();
         Log.d(TAG, plantFileName);
         try {
@@ -81,7 +84,7 @@ public class PhotoFragment extends Fragment implements ViewPager.OnPageChangeLis
         return parts[1] + "_" + sequenceNumber + ".jpg";
     }
 
-    @Override
+ /*   @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
@@ -104,5 +107,6 @@ public class PhotoFragment extends Fragment implements ViewPager.OnPageChangeLis
     public void onPageScrollStateChanged(int state) {
         Log.d(TAG, "page scroll state changed");
     }
+*/
 
 }
