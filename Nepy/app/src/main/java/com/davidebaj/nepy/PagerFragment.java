@@ -53,6 +53,29 @@ public class PagerFragment extends Fragment {
 
         ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(mAdapter);
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.d(TAG, "onPageScrolled " + position);
+                Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+                if (position == 0) {
+                    toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
+                } else if (position == 1) {
+                    toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType2() + ")");
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.d(TAG, "onPageSelected");
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.d(TAG, "onPageScrollStateChanged");
+
+            }
+        });
 
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");

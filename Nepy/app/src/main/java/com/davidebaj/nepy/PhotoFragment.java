@@ -27,7 +27,7 @@ import java.io.InputStream;
 /**
  * Created by davide on 27/02/16.
  */
-public class PhotoFragment extends Fragment  {
+public class PhotoFragment extends Fragment {
 
     private static final String TAG = "PhotoFragment";
     private Plant plant;
