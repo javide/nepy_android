@@ -112,7 +112,7 @@ public class Resources {
         try {
             value = properties.getProperty(propertyName).trim();
         } catch (NullPointerException e) {
-            Log.e(TAG, "'" + propertyName + "' property not found" + e.getMessage());
+            Log.e(TAG, "'" + propertyName + "' property not found: " + e.getMessage());
             System.exit(1);
         }
 

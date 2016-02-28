@@ -3,7 +3,7 @@
  *  Copyright (C) 2016, Davide Baj - All Rights Reserved
  *
  *  Project name: Nepy
- *  Filename: PagerActivity.java
+ *  Filename: PagerFragment.java
  *  Author: Davide Baj
  *  -------------------------------------------------------------------------
  */

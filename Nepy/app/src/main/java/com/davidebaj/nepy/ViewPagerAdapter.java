@@ -3,7 +3,7 @@
  *  Copyright (C) 2016, Davide Baj - All Rights Reserved
  *
  *  Project name: Nepy
- *  Filename: PagerAdapter.java
+ *  Filename: ViewPagerAdapter.java
  *  Author: Davide Baj
  *  -------------------------------------------------------------------------
  */
@@ -13,7 +13,6 @@ package com.davidebaj.nepy;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
 import java.util.List;
 
@@ -28,7 +27,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
         this.fragments = fragments;
-        Log.d(TAG, "Created adapter");
     }
 
     @Override
@@ -39,7 +37,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.d(TAG, "getItem " + position);
+      //  Log.d(TAG, "getItem " + position);
         return this.fragments.get(position);
     }
 }

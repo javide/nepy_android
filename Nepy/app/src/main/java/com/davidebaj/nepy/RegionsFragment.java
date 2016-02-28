@@ -3,7 +3,7 @@
  *  Copyright (C) 2016, Davide Baj - All Rights Reserved
  *
  *  Project name: Nepy
- *  Filename: RegionViewFragment.java
+ *  Filename: RegionsFragment.java
  *  Author: Davide Baj
  *  -------------------------------------------------------------------------
  */
@@ -119,7 +119,7 @@ public class RegionsFragment extends Fragment implements View.OnClickListener {
         Log.d(TAG, "Clicked region:" + regionCode);
 
         List<Plant> plantList = MainActivity.resources.getPlantsObj().getPlantsByRegion(regionCode);
-        ArrayAdapter adapter = new PlantArrayAdapter(getContext(), plantList.toArray(new Plant[plantList.size()]));
+        ArrayAdapter<Plant> adapter = new PlantArrayAdapter(getContext(), plantList.toArray(new Plant[plantList.size()]));
         PlantListFragment fragment = PlantListFragment.newInstance(regionName, adapter);
 
         // FragmentManager.enableDebugLogging(true);

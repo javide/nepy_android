@@ -140,6 +140,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_quiz) {
             Log.d(TAG, "Selected quiz ************");
 
+            fragment = QuizFragment.newInstance(resources.getProperty("nav.QUIZ"));
+
         } else if (id == R.id.nav_about) {
             Log.d(TAG, "Selected about ************");
 
@@ -181,14 +183,5 @@ public class MainActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .replace(R.id.content_main, pagerFragment)
                 .commit();
-
-
-
-/*
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        fragmentTransaction.replace(R.id.content_main, pagerFragment).commit();
-*/
     }
 }

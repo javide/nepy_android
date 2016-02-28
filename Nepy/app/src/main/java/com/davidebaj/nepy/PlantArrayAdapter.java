@@ -57,7 +57,7 @@ public class PlantArrayAdapter extends ArrayAdapter<Plant> {
 
         TextView textView = (TextView) rowView.findViewById(R.id.species_textview);
 
-        String iconFileName = "plant_icons/" + getPlantIconFileName(plants[index].getSpecies());
+        String iconFileName = "img/plant_icons/" + getPlantIconFileName(plants[index].getSpecies());
         AssetManager assetManager = context.getAssets();
 
         try {
