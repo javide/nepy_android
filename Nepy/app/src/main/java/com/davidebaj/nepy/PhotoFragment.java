@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.davidebaj.nepy.dao.Plant;
 
@@ -61,6 +62,19 @@ public class PhotoFragment extends Fragment {
             InputStream inputStream = assetManager.open(plantFileName);
             ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
             imageView.setImageDrawable(Drawable.createFromStream(inputStream, ""));
+
+            // photo credit
+            TextView authorTextView = (TextView) view.findViewById(R.id.photoAuthor);
+            String imageCredit = null;
+            if (photoNum == 1) {
+                imageCredit = plant.getImgCredit();
+            } else if (photoNum == 2) {
+                imageCredit = plant.getImgCredit2();
+            }
+
+            if (imageCredit != null && !imageCredit.equals("")) {
+                authorTextView.setText(" " + MainActivity.resources.getProperty("label.IMAGE_CREDIT") + " " + imageCredit);
+            }
 
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());

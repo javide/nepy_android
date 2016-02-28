@@ -12,7 +12,6 @@
     tools:context="com.davidebaj.nepy.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:id="@+id/content_main"
-    android:orientation="vertical">
-
-
+    android:orientation="vertical"
+    android:background="#000000">
 </LinearLayout>
