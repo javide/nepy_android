@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.IOUtils;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Properties;
@@ -37,6 +38,7 @@ public class Resources {
     private static Plants plants;
     private static Context context;
     private static Properties properties;
+    private static String plantDescriptionTemplate;
 
     private Resources() {
         parseNepenthesFile();
@@ -110,11 +112,29 @@ public class Resources {
         try {
             value = properties.getProperty(propertyName).trim();
         } catch (NullPointerException e) {
-            Log.e("'" + propertyName + "' property not found", e.getMessage());
+            Log.e(TAG, "'" + propertyName + "' property not found" + e.getMessage());
             System.exit(1);
         }
 
         return value;
+    }
+
+    public String loadDescriptionTemplate() {
+
+        if (plantDescriptionTemplate != null) {
+            return plantDescriptionTemplate;
+        }
+
+        try {
+            AssetManager assetManager = context.getAssets();
+            InputStream inputStream = assetManager.open("plant_description.html");
+            plantDescriptionTemplate = IOUtils.toString(inputStream, "UTF-8");
+        } catch (IOException e) {
+            Log.e(TAG, "Unable to find plant description template" + e.getMessage());
+            System.exit(1);
+        }
+
+        return plantDescriptionTemplate;
     }
 
 }

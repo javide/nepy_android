@@ -31,7 +31,6 @@ public class PagerFragment extends Fragment {
 
     private static final String TAG = "PagerFragment";
     private Plant plant;
-    private ViewPagerAdapter mAdapter;
 
     public static PagerFragment newInstance(Plant aPlant) {
         PagerFragment f = new PagerFragment();
@@ -44,41 +43,50 @@ public class PagerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
+
         List<Fragment> fragments = new Vector<>();
         fragments.add(PhotoFragment.newInstance(plant, 1));
         fragments.add(PhotoFragment.newInstance(plant, 2));
-        mAdapter  = new ViewPagerAdapter(getChildFragmentManager(), fragments);
+        fragments.add(DescriptionFragment.newInstance(plant));
+        ViewPagerAdapter mAdapter = new ViewPagerAdapter(getChildFragmentManager(), fragments);
 
         View view = inflater.inflate(R.layout.pager, container, false);
 
         ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(mAdapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            private int currentPosition;
+            private Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+            private String species = plant.getSpecies();
+            private String pitcherType1 = species + " (" + plant.getPitcherType() + ")";
+            private String pitcherType2 = species + " (" + plant.getPitcherType2() + ")";
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d(TAG, "onPageScrolled " + position);
-                Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-                if (position == 0) {
-                    toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
-                } else if (position == 1) {
-                    toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType2() + ")");
-                }
+                currentPosition = position;
             }
 
             @Override
             public void onPageSelected(int position) {
-                Log.d(TAG, "onPageSelected");
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.d(TAG, "onPageScrollStateChanged");
 
+                if (currentPosition == 0) {
+                    toolbar.setTitle(pitcherType1);
+                } else if (currentPosition == 1) {
+                    toolbar.setTitle(pitcherType2);
+                } else if (currentPosition == 2) {
+                    toolbar.setTitle(species);
+                } else {
+                    toolbar.setTitle("");
+                }
             }
         });
-
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle(plant.getSpecies() + " (" + plant.getPitcherType() + ")");
 
         return view;
     }
