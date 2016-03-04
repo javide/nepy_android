@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

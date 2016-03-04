@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import com.davidebaj.nepy.MainActivity;
+import com.davidebaj.nepy.adapters.PlantArrayAdapter;
+import com.davidebaj.nepy.R;
 import com.davidebaj.nepy.dao.Plant;
 
 import java.util.List;
@@ -89,25 +92,25 @@ public class RegionsFragment extends Fragment implements View.OnClickListener {
         String regionCode = null;
         String regionName = null;
 
-        if (button1.getId() == ((Button) v).getId()) {
+        if (button1.getId() == v.getId()) {
             regionCode = "1";
             regionName = (String) button1.getText();
-        } else if (button2.getId() == ((Button) v).getId()) {
+        } else if (button2.getId() == v.getId()) {
             regionCode = "2";
             regionName = (String) button2.getText();
-        } else if (button3.getId() == ((Button) v).getId()) {
+        } else if (button3.getId() == v.getId()) {
             regionCode = "3";
             regionName = (String) button3.getText();
-        } else if (button4.getId() == ((Button) v).getId()) {
+        } else if (button4.getId() == v.getId()) {
             regionCode = "4";
             regionName = (String) button4.getText();
-        } else if (button5.getId() == ((Button) v).getId()) {
+        } else if (button5.getId() == v.getId()) {
             regionCode = "5";
             regionName = (String) button5.getText();
-        } else if (button6.getId() == ((Button) v).getId()) {
+        } else if (button6.getId() == v.getId()) {
             regionCode = "6";
             regionName = (String) button6.getText();
-        } else if (button7.getId() == ((Button) v).getId()) {
+        } else if (button7.getId() == v.getId()) {
             regionCode = "7";
             regionName = (String) button7.getText();
         }

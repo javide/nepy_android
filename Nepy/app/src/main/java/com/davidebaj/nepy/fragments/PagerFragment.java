@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.davidebaj.nepy.R;
+import com.davidebaj.nepy.adapters.ViewPagerAdapter;
 import com.davidebaj.nepy.dao.Plant;
 
 import java.util.List;

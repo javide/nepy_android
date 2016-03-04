@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.adapters;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.davidebaj.nepy.R;
 import com.davidebaj.nepy.dao.Plant;
 
 import java.io.InputStream;

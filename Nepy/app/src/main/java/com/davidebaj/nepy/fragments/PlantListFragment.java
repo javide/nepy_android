@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.davidebaj.nepy.R;
 import com.davidebaj.nepy.dao.Plant;
 
 /**

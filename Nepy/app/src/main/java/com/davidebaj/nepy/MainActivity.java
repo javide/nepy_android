@@ -28,7 +28,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import com.davidebaj.nepy.adapters.PlantArrayAdapter;
 import com.davidebaj.nepy.dao.Plant;
+import com.davidebaj.nepy.fragments.PagerFragment;
+import com.davidebaj.nepy.fragments.PlantListFragment;
+import com.davidebaj.nepy.fragments.QuizFragment;
+import com.davidebaj.nepy.fragments.RegionsFragment;
 
 import java.util.List;
 import java.util.Locale;

@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.fragments;
 
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.davidebaj.nepy.MainActivity;
+import com.davidebaj.nepy.R;
 import com.davidebaj.nepy.dao.Plant;
 
 import java.io.InputStream;
@@ -46,8 +48,7 @@ public class PhotoFragment extends Fragment {
 
         Log.d(TAG, " on create view");
 
-        View view = inflater.inflate(R.layout.photo, container, false);
-        return view;
+        return inflater.inflate(R.layout.photo, container, false);
     }
 
     @Override

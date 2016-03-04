@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +18,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.davidebaj.nepy.MainActivity;
+import com.davidebaj.nepy.R;
 
 /**
  * Created by davide on 28/02/16.
@@ -57,7 +60,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        if (startButton.getId() != ((Button) v).getId()) {
+        if (startButton.getId() != v.getId()) {
             return;
         }
 

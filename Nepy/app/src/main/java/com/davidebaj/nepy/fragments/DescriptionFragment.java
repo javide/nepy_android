@@ -8,7 +8,7 @@
  *  -------------------------------------------------------------------------
  */
 
-package com.davidebaj.nepy;
+package com.davidebaj.nepy.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import com.davidebaj.nepy.MainActivity;
+import com.davidebaj.nepy.R;
+import com.davidebaj.nepy.Resources;
 import com.davidebaj.nepy.dao.Plant;
 
 /**
