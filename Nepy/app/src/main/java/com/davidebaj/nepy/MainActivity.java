@@ -73,11 +73,6 @@ public class MainActivity extends AppCompatActivity
 
         resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
 
-      /*  for (Plant plant : resources.getPlantsObj().getPlants()) {
-            Log.d(TAG, plant.getSpecies());
-        }
-      */
-
     }
 
     @Override

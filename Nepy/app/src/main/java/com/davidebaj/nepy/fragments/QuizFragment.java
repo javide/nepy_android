@@ -21,6 +21,10 @@ import android.widget.Button;
 
 import com.davidebaj.nepy.MainActivity;
 import com.davidebaj.nepy.R;
+import com.davidebaj.nepy.dao.Challenge;
+import com.davidebaj.nepy.dao.Quiz;
+
+import java.util.List;
 
 /**
  * Created by davide on 28/02/16.
@@ -65,5 +69,11 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         }
 
         Log.d(TAG, "Clicked start quiz button");
+
+        Quiz quiz = Quiz.getInstance();
+        List<Challenge> challenges = quiz.getQuizData();
+        quiz.logQuizData();
+
+        //  Fragment fragment = PhotoFragment.newInstance();
     }
 }

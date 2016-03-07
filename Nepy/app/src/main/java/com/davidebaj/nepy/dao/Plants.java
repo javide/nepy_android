@@ -42,6 +42,16 @@ public class Plants {
     }
 
     /**
+     *
+     * @param plants
+     * The plants
+     */
+    @JsonProperty("plants")
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
+    }
+
+    /**
      * Returns a list of plants in the given regionCode
      *
      * @param regionCode - the id corresponding to a geographical region
@@ -51,7 +61,7 @@ public class Plants {
 
         List<Plant> plantList = new ArrayList<>();
 
-        for (Plant plant : getPlants()) {
+        for (Plant plant : plants) {
             if (plant.getRegions().contains(regionCode)) {
                 plantList.add(plant);
             }
@@ -61,13 +71,19 @@ public class Plants {
     }
 
     /**
-     *
-     * @param plants
-     * The plants
+     * Returns a plant for the given id - if it exists - or null otherwise
+     * @param id - the string plant id
+     * @return plant
      */
-    @JsonProperty("plants")
-    public void setPlants(List<Plant> plants) {
-        this.plants = plants;
+    public Plant getPlantById(String id) {
+
+        for (Plant p : plants) {
+            if (p.getId().equals(id)) {
+                return p;
+            }
+        }
+
+        return null;
     }
 
     @Override

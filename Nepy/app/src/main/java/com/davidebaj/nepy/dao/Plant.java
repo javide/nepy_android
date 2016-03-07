@@ -324,6 +324,17 @@ public class Plant {
         this.fieldNotes = fieldNotes;
     }
 
+    /**
+     * Returns the plant filename for the given sequenceNumber (adnata_1.jpg)
+     *
+     * @param photoNum - either "1" or "2"
+     * @return a filename such as "adnata_1.jpg"
+     */
+    public String getPlantFileName(String photoNum) {
+        String[] parts = species.split(" ");
+        return parts[1] + "_" + photoNum + ".jpg";
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

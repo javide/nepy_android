@@ -56,7 +56,7 @@ public class PhotoFragment extends Fragment {
 
         Log.d(TAG, " on view created");
 
-        String plantFileName = "img/plants/" + getPlantFileName(plant.getSpecies(), Integer.toString(photoNum));
+        String plantFileName = "img/plants/" + plant.getPlantFileName(Integer.toString(photoNum));
         AssetManager assetManager = getContext().getAssets();
         Log.d(TAG, plantFileName);
         try {
@@ -81,17 +81,6 @@ public class PhotoFragment extends Fragment {
             Log.e(TAG, e.getMessage());
             Log.d(TAG, "iconFileName = " + plantFileName);
         }
-    }
-
-    /**
-     * Derives the plant filename from the species description (e.g. "N. adnata" --> adnata_1.jpg)
-     *
-     * @param speciesName - a species name such as "N. adnata"
-     * @return a filename such as adnata_1.jpg
-     */
-    private String getPlantFileName(String speciesName, String sequenceNumber) {
-        String[] parts = speciesName.split(" ");
-        return parts[1] + "_" + sequenceNumber + ".jpg";
     }
 
     @Override
