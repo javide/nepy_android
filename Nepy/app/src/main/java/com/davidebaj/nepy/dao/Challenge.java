@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Challenge {
 
-    private String photoFilename;
+    private String photoNum;
     private Plant aPlant;
     private List<String> answers;
 
@@ -27,15 +27,15 @@ public class Challenge {
 
     /**
      * Returns a Challenge for the supplied photoNum and Plant
-     * @param photoNum - currently either "1" or "2"
+     * @param photoNumber - currently either "1" or "2"
      * @param plant - a Plant object
      * @return - a Challenge object
      */
-    static Challenge getInstance(String photoNum, Plant plant) {
+    static Challenge getInstance(String photoNumber, Plant plant) {
 
         Challenge challenge = new Challenge();
 
-        challenge.photoFilename = plant.getPlantFileName(photoNum);
+        challenge.photoNum = photoNumber;
         challenge.aPlant = plant;
 
         return challenge;
@@ -69,12 +69,12 @@ public class Challenge {
     }
 
     /**
-     * Returns the photo filename of the plant of this challenge
+     * Returns the photo number of the plant associated with this challenge
      *
-     * @return - a filename, e.g.: ampullaria_2.jpg
+     * @return - the photo number
      */
-    public String getPhotoFilename() {
-        return photoFilename;
+    public String getPhotoNum() {
+        return photoNum;
     }
 
     /**

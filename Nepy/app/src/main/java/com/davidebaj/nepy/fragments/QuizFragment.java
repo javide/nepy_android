@@ -72,8 +72,15 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
 
         Quiz quiz = Quiz.getInstance();
         List<Challenge> challenges = quiz.getQuizData();
-        quiz.logQuizData();
+        //quiz.logQuizData();
 
-        //  Fragment fragment = PhotoFragment.newInstance();
+        Fragment fragment = ChallengeFragment.newInstance(challenges);
+
+        getFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.content_main, fragment)
+                .commit();
     }
+
 }
