@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import com.davidebaj.nepy.BuildConfig;
 import com.davidebaj.nepy.MainActivity;
 import com.davidebaj.nepy.R;
 import com.davidebaj.nepy.Resources;
@@ -65,7 +66,9 @@ public class AboutFragment extends Fragment {
             content = content.replace("$" + propertyName, res.getProperty(propertyName));
         }
 
-        content = content.replace("$__authors", android.text.TextUtils.join("<br/>", res.getPlantsObj().getAuthors()));
+        content = content.replace("$__authors", android.text.TextUtils.join("<br/>", res.getPlantsObj().getAuthors()))
+                .replace("$__version_name", BuildConfig.VERSION_NAME) // set in the Gradle build cfg
+                .replace("$__application_id", getContext().getString(R.string.app_name));
 
         WebView webView = (WebView) getActivity().findViewById(R.id.about_view);
         webView.setBackgroundColor(Color.BLACK);

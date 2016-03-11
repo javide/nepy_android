@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Nepy</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="plant_photo">Plant photo</string>
     <string name="quiz_home_background">Quiz home background</string>
