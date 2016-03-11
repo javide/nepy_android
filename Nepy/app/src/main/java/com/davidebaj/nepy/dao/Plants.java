@@ -19,7 +19,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
@@ -84,6 +87,25 @@ public class Plants {
         }
 
         return null;
+    }
+
+    /**
+     * Returns a list of all the authors of plant photographs in alphabetical order
+     * @return - a list of strings
+     */
+    public List<String> getAuthors() {
+
+        Set<String> authors = new HashSet<>();
+
+        for (Plant p : plants) {
+            authors.add(p.getImgCredit());
+            authors.add(p.getImgCredit2());
+        }
+
+        List<String> sortedAuthors = new ArrayList<>(authors);
+        Collections.sort(sortedAuthors);
+
+        return sortedAuthors;
     }
 
     @Override

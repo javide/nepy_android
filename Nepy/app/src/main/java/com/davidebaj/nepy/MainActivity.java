@@ -30,6 +30,7 @@ import android.widget.ArrayAdapter;
 
 import com.davidebaj.nepy.adapters.PlantArrayAdapter;
 import com.davidebaj.nepy.dao.Plant;
+import com.davidebaj.nepy.fragments.AboutFragment;
 import com.davidebaj.nepy.fragments.PagerFragment;
 import com.davidebaj.nepy.fragments.PlantListFragment;
 import com.davidebaj.nepy.fragments.QuizFragment;
@@ -144,6 +145,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_about) {
             Log.d(TAG, "Selected about ************");
+
+            fragment = AboutFragment.newInstance(resources.getProperty("nav.ABOUT"));
 
         } else if (id == R.id.nav_share) {
 

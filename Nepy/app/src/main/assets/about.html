@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        body{font-size:18px; color:#FFF; }
+        a { color:#FFF}
+        .pronunciation {
+        font-family:Garamond;font-size:16px;font-style:underline;font-weight:bold;text-decoration:none;text-transform:none;color:FFFFFF;
+        }
+        .desc {
+        font-family:Garamond;font-size:15px;font-style:normal;font-weight:normal;text-decoration:none;text-transform:none;color:FFFFFF;
+        }
+
+        .center
+        {
+        margin:auto;
+        width:90%;
+        }
+    </style>
+    <script type="text/javascript">
+            function do_confirm()
+            {
+                var x;
+                var r=confirm("Press a button!");
+                if (r==true)
+                {
+                    x="You pressed OK!";
+                }
+                else
+                {
+                    x="You pressed Cancel!";
+                }
+
+            }
+            
+            function sendToApp(_key, _val) {
+                var r=confirm("This will launch Safari.");
+                if (r==true)
+                {
+                    _val="OK";
+                }
+
+                var iframe = document.createElement("IFRAME");
+                iframe.setAttribute("src", _key + ":##sendToApp##" + _val);
+                document.documentElement.appendChild(iframe);
+                iframe.parentNode.removeChild(iframe);
+                iframe = null; 
+            };
+            
+
+    </script>
+</head>
+<body style='background-color: blackimage: linear-gradient(bottom, rgb(46,46,46) 57%, rgb(51,51,51) 100%, rgb(128,121,128) 0%);
+        background-image: -o-linear-gradient(bottom, rgb(46,46,46) 57%, rgb(51,51,51) 100%, rgb(128,121,128) 0%);
+        background-image: -moz-linear-gradient(bottom, rgb(46,46,46) 57%, rgb(51,51,51) 100%, rgb(128,121,128) 0%);
+        background-image: -webkit-linear-gradient(bottom, rgb(46,46,46) 57%, rgb(51,51,51) 100%, rgb(128,121,128) 0%);
+        background-image: -ms-linear-gradient(bottom, rgb(46,46,46) 57%, rgb(51,51,51) 100%, rgb(128,121,128) 0%);
+        
+        background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.57, rgb(46,46,46)),
+        color-stop(1, rgb(51,51,51)),
+        color-stop(0, rgb(128,121,128))
+        );'>
+<div class="center">
+
+    <p class="pronunciation">$credits.INTRO_LINE</p>
+    <input type="button" value="$credits.REDFERN_URL"/>
+    <br/>
+    <img border="0" src="book_1.jpg"
+         alt="Stewart McPherson, Pitcher Plants of the Old World, Vol.1, Redfern Natural History Productions"
+         width="80%" height="80%">
+    <br/>
+    <img border="0" src="book_2.jpg"
+         alt="Stewart McPherson, Pitcher Plants of the Old World, Vol.2, Redfern Natural History Productions"
+         width="80%" height="80%">
+    <br/>
+    <img border="0" src="book_3.jpg"
+         alt="Stewart McPherson, New Nepenthes, Vol.1, Redfern Natural History Productions"
+         width="80%" height="80%">
+
+    <p>$credits.BOOKS</p>
+
+    <p>$credits.SPECIAL_THANKS</p>
+
+    <input type="button" value="$credits.URL_1"/><br/>
+    <input type="button" value="$credits.URL_2"/><br/>
+    <input type="button" value="$credits.URL_3"/><br/>
+
+    <p>$credits.EDITOR</p>
+
+    <p>$credits.IMAGES</p>
+
+    <p>$__authors</p>
+
+    <p>$credits.SOUNDS</p>
+
+    <p>$credits.DEVELOPER</p>
+
+    <p>$credits.COPYRIGHT</p>
+
+    <br/><br/><br/>
+</div>
+</body>
+</html>

@@ -24,7 +24,9 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * Created by davide on 21/02/16.
@@ -39,9 +41,10 @@ public class Resources {
     private static Context context;
     private static Properties properties;
     private static String plantDescriptionTemplate;
+    private static String aboutTemplate;
 
     private Resources() {
-        parseNepenthesFile();
+        parsePlantsFile();
         loadProperties();
     }
 
@@ -62,13 +65,16 @@ public class Resources {
         return plants;
     }
 
-    private static void parseNepenthesFile() {
+    /**
+     *
+     */
+    private static void parsePlantsFile() {
 
-        Log.d(TAG, "Parsing Nepenthes file");
+        Log.d(TAG, "Parsing Plants file");
 
         try {
             AssetManager assetManager = context.getAssets();
-            InputStream inputStream = assetManager.open(languageCode + "/nepenthes.json");
+            InputStream inputStream = assetManager.open(languageCode + "/plants.json");
             String jsonString = IOUtils.toString(inputStream, "UTF-8");
 
             ObjectMapper mapper = new ObjectMapper();
@@ -83,6 +89,9 @@ public class Resources {
 
     }
 
+    /**
+     * Loads all the properties in memory for the language of this object
+     */
     private static void loadProperties() {
 
         Log.d(TAG, "Loading translations");
@@ -105,6 +114,11 @@ public class Resources {
         }
     }
 
+    /**
+     * Returns the value of a given property
+     * @param propertyName - the key name of the property
+     * @return - the value of the property
+     */
     public String getProperty(String propertyName) {
 
         String value = null;
@@ -119,22 +133,74 @@ public class Resources {
         return value;
     }
 
-    public String loadDescriptionTemplate() {
+    /**
+     * Returns a set of strings of all or matching property key names
+     * @return - a set of strings (not ordered)
+     */
+    public Set<String> getAllProperties(String filter) {
+
+        if (filter == null) {
+            return properties.stringPropertyNames();
+        }
+
+        Set<String> propertySet = new HashSet<>();
+        String regexp = "^" + filter + ".*$";
+
+        for (String p : properties.stringPropertyNames()) {
+            if (p.matches(regexp)) {
+                propertySet.add(p);
+            }
+        }
+
+        return propertySet;
+    }
+
+    /**
+     * Returns the plant description page template
+     * @return - String
+     */
+    public String getDescriptionTemplate() {
 
         if (plantDescriptionTemplate != null) {
             return plantDescriptionTemplate;
         }
 
-        try {
-            AssetManager assetManager = context.getAssets();
-            InputStream inputStream = assetManager.open("plant_description.html");
-            plantDescriptionTemplate = IOUtils.toString(inputStream, "UTF-8");
-        } catch (IOException e) {
-            Log.e(TAG, "Unable to find plant description template" + e.getMessage());
-            System.exit(1);
+        plantDescriptionTemplate = loadTemplate("plant_description.html");
+        return plantDescriptionTemplate;
+    }
+
+    /**
+     * Returns the about page template
+     * @return - String
+     */
+    public String getAboutTemplate() {
+
+        if (aboutTemplate != null) {
+            return aboutTemplate;
         }
 
-        return plantDescriptionTemplate;
+        aboutTemplate = loadTemplate("about.html");
+        return aboutTemplate;
+    }
+
+    /**
+     * Returns a template string loaded from a resource filename
+     * @param filename - resource
+     * @return - the content of the file
+     */
+    private String loadTemplate(String filename) {
+
+        String template = "";
+
+        try {
+            AssetManager assetManager = context.getAssets();
+            InputStream inputStream = assetManager.open(filename);
+            template = IOUtils.toString(inputStream, "UTF-8");
+        } catch (IOException e) {
+            Log.e(TAG, "Unable to find template" + e.getMessage());
+        }
+
+        return template;
     }
 
 }

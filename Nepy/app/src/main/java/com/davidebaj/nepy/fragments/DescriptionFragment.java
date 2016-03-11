@@ -57,7 +57,7 @@ public class DescriptionFragment extends Fragment {
 
         String html;
         Resources res = MainActivity.resources;
-        String template = res.loadDescriptionTemplate();
+        String template = res.getDescriptionTemplate();
 
         html = template.replace("$title_pronunciation", res.getProperty("desc.PRONUNCIATION"));
         html = html.replace("$pronunciation_1", plant.getPronunciation1());
