@@ -31,6 +31,7 @@ import android.widget.ArrayAdapter;
 import com.davidebaj.nepy.adapters.PlantArrayAdapter;
 import com.davidebaj.nepy.dao.Plant;
 import com.davidebaj.nepy.fragments.AboutFragment;
+import com.davidebaj.nepy.fragments.LanguageFragment;
 import com.davidebaj.nepy.fragments.PagerFragment;
 import com.davidebaj.nepy.fragments.PlantListFragment;
 import com.davidebaj.nepy.fragments.QuizFragment;
@@ -118,7 +119,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_language) {
+            Log.d(TAG, "Option language");
+
+            LanguageFragment languageFragment = LanguageFragment.newInstance(resources.getProperty("nav.LANGUAGE"));
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.content_main, languageFragment)
+                    .commit();
+
             return true;
         }
 

@@ -16,8 +16,4 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <color name="backgroundColor">#774500</color>
-    <color name="gradientStart">#996700</color>
-    <color name="gradientEnd">#774500</color>
 </resources>
