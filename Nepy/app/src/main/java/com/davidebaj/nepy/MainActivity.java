@@ -83,6 +83,13 @@ public class MainActivity extends AppCompatActivity
 
         resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
 
+        // default fragment
+        fragment = getAllSpeciesFragment();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentTransaction.replace(R.id.content_main, fragment).commit();
     }
 
     @Override
@@ -102,7 +109,6 @@ public class MainActivity extends AppCompatActivity
 
         // set drawer menu item titles
         NavigationView nav_draw = (NavigationView) findViewById(R.id.nav_view);
-        nav_draw.getMenu().findItem(R.id.nav_home).setTitle(resources.getProperty("nav.HOME"));
         nav_draw.getMenu().findItem(R.id.nav_all_species).setTitle(resources.getProperty("nav.ALL_SPECIES"));
         nav_draw.getMenu().findItem(R.id.nav_by_region).setTitle(resources.getProperty("nav.BY_REGION"));
         nav_draw.getMenu().findItem(R.id.nav_quiz).setTitle(resources.getProperty("nav.QUIZ"));
@@ -142,15 +148,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            Log.d(TAG, "Selected home ************");
-
-        } else if (id == R.id.nav_all_species) {
+        if (id == R.id.nav_all_species) {
             Log.d(TAG, "Selected all species ************");
 
-            List<Plant> plantList = resources.getPlantsObj().getPlants();
-            ArrayAdapter<Plant> adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
-            fragment = PlantListFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
+            fragment = getAllSpeciesFragment();
 
         } else if (id == R.id.nav_by_region) {
             Log.d(TAG, "Selected by region ************");
@@ -205,5 +206,15 @@ public class MainActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .replace(R.id.content_main, pagerFragment)
                 .commit();
+    }
+
+    /**
+     * Returns the fragment to display all species
+     * @return - a PlantListFragment fragment
+     */
+    private PlantListFragment getAllSpeciesFragment() {
+        List<Plant> plantList = resources.getPlantsObj().getPlants();
+        ArrayAdapter<Plant> adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
+        return PlantListFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);
     }
 }

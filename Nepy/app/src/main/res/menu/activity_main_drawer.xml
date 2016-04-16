@@ -3,24 +3,20 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_home"
-            android:title="" />
-        <item
             android:id="@+id/nav_all_species"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_list"
             android:title="" />
         <item
             android:id="@+id/nav_by_region"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_region"
             android:title="" />
         <item
             android:id="@+id/nav_quiz"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_quiz"
             android:title="" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_about"
             android:title="" />
     </group>
 
