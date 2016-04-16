@@ -121,8 +121,7 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
         Challenge challenge = challenges.get(counter);
         ImageView imageView = (ImageView) getActivity().findViewById(R.id.imageGame);
         Plant plant = challenge.getPlant();
-        // String plantFileName = "img/plants/" + plant.getPlantFileName(challenge.getPhotoNum());
-        String plantFileName = "img/plants/adnata_1.jpg";
+        String plantFileName = "img/plants/" + plant.getPlantFileName(challenge.getPhotoNum());
 
         AssetManager assetManager = getContext().getAssets();
         InputStream inputStream = null;
