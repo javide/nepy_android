@@ -8,8 +8,7 @@
         android:layout_height="match_parent"
         android:id="@+id/quizHomePhoto"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/quiz_home"
-        android:contentDescription="@string/quiz_home_background" />
+        android:background="@drawable/quiz_home" />
 
     <Button
         android:layout_width="match_parent"

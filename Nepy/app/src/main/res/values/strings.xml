@@ -5,6 +5,5 @@
     <string name="action_language">Language</string>
     <string name="action_sound">Sound</string>
     <string name="plant_photo">Plant photo</string>
-    <string name="quiz_home_background">Quiz home background</string>
-
+    <string name="sound_option">Quiz Sound</string>
 </resources>

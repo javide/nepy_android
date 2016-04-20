@@ -31,11 +31,11 @@ import android.widget.ArrayAdapter;
 import com.davidebaj.nepy.adapters.PlantArrayAdapter;
 import com.davidebaj.nepy.dao.Plant;
 import com.davidebaj.nepy.fragments.AboutFragment;
-import com.davidebaj.nepy.fragments.LanguageFragment;
 import com.davidebaj.nepy.fragments.PagerFragment;
 import com.davidebaj.nepy.fragments.PlantListFragment;
 import com.davidebaj.nepy.fragments.QuizFragment;
 import com.davidebaj.nepy.fragments.RegionsFragment;
+import com.davidebaj.nepy.fragments.SoundFragment;
 
 import java.util.List;
 import java.util.Locale;
@@ -124,22 +124,26 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_language) {
-            Log.d(TAG, "Option language");
+        Fragment settingsFragment;
 
-            LanguageFragment languageFragment = LanguageFragment.newInstance(resources.getProperty("nav.LANGUAGE"));
+        /*if (R.id.action_language == id) {
+            settingsFragment = LanguageFragment.newInstance(resources.getProperty("nav.LANGUAGE"));
+        } else
+        */
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .addToBackStack(null)
-                    .replace(R.id.content_main, languageFragment)
-                    .commit();
-
-            return true;
+        if (R.id.action_sound == id) {
+            settingsFragment = SoundFragment.newInstance(resources.getProperty("nav.SOUND"));
+        } else {
+            return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.content_main, settingsFragment)
+                .commit();
+
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -149,31 +153,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_all_species) {
-            Log.d(TAG, "Selected all species ************");
-
             fragment = getAllSpeciesFragment();
-
         } else if (id == R.id.nav_by_region) {
-            Log.d(TAG, "Selected by region ************");
-
             fragment = RegionsFragment.newInstance(resources.getProperty("label.REGIONS"));
-
         } else if (id == R.id.nav_quiz) {
-            Log.d(TAG, "Selected quiz ************");
-
             fragment = QuizFragment.newInstance(resources.getProperty("nav.QUIZ"));
-
         } else if (id == R.id.nav_about) {
-            Log.d(TAG, "Selected about ************");
-
             fragment = AboutFragment.newInstance(resources.getProperty("nav.ABOUT"));
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         } else {
-
             return true;
         }
 
@@ -184,8 +171,6 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         fragmentTransaction.replace(R.id.content_main, fragment).commit();
-
-        Log.d(TAG, "TRANSACTION COMMITED +++++++++++");
 
         return true;
     }
