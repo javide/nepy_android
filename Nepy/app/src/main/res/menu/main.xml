@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:id="@+id/overflow_menu">
 
-    <!--
-    <item
-        android:id="@+id/action_language"
+  <!--
+  Overflow menu only
+  <item
+        android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_language"
+        android:title="@string/action_settings"
         app:showAsAction="never" />
-    -->
-    <item
-        android:id="@+id/action_sound"
-        android:orderInCategory="100"
-        android:title="@string/action_sound"
-        app:showAsAction="never" />
+
+        -->
 </menu>

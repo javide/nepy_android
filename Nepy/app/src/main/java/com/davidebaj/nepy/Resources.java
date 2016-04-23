@@ -48,6 +48,12 @@ public class Resources {
         loadProperties();
     }
 
+    /**
+     * Singleton
+     * @param aContext - app context
+     * @param languageCodeStr - iso3166 country code
+     * @return - a Resources obj
+     */
     public static Resources getResources(Context aContext, String languageCodeStr) {
 
         Log.d(TAG, "Creating object");

@@ -2,8 +2,6 @@
     <string name="app_name">Nepy</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_language">Language</string>
-    <string name="action_sound">Sound</string>
     <string name="plant_photo">Plant photo</string>
-    <string name="sound_option">Quiz Sound</string>
+    <string name="action_settings">Settings</string>
 </resources>

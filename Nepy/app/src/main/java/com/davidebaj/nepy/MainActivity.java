@@ -35,7 +35,7 @@ import com.davidebaj.nepy.fragments.PagerFragment;
 import com.davidebaj.nepy.fragments.PlantListFragment;
 import com.davidebaj.nepy.fragments.QuizFragment;
 import com.davidebaj.nepy.fragments.RegionsFragment;
-import com.davidebaj.nepy.fragments.SoundFragment;
+import com.davidebaj.nepy.fragments.SettingsFragment;
 
 import java.util.List;
 import java.util.Locale;
@@ -104,8 +104,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+
+        // Inflate the overflow menu; this adds items to the action bar if it is present.
+        //  getMenuInflater().inflate(R.menu.main, menu);
+        //  menu.getItem(0).setTitle(resources.getProperty("nav.SETTINGS"));
 
         // set drawer menu item titles
         NavigationView nav_draw = (NavigationView) findViewById(R.id.nav_view);
@@ -113,37 +115,10 @@ public class MainActivity extends AppCompatActivity
         nav_draw.getMenu().findItem(R.id.nav_by_region).setTitle(resources.getProperty("nav.BY_REGION"));
         nav_draw.getMenu().findItem(R.id.nav_quiz).setTitle(resources.getProperty("nav.QUIZ"));
         nav_draw.getMenu().findItem(R.id.nav_about).setTitle(resources.getProperty("nav.ABOUT"));
+        nav_draw.getMenu().findItem(R.id.nav_settings).setTitle(resources.getProperty("nav.SETTINGS"));
 
         return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        Fragment settingsFragment;
-
-        /*if (R.id.action_language == id) {
-            settingsFragment = LanguageFragment.newInstance(resources.getProperty("nav.LANGUAGE"));
-        } else
-        */
-
-        if (R.id.action_sound == id) {
-            settingsFragment = SoundFragment.newInstance(resources.getProperty("nav.SOUND"));
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.content_main, settingsFragment)
-                .commit();
-
-        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -160,6 +135,8 @@ public class MainActivity extends AppCompatActivity
             fragment = QuizFragment.newInstance(resources.getProperty("nav.QUIZ"));
         } else if (id == R.id.nav_about) {
             fragment = AboutFragment.newInstance(resources.getProperty("nav.ABOUT"));
+        } else if (id == R.id.nav_settings) {
+            fragment = SettingsFragment.newInstance(resources.getProperty("nav.SETTINGS"));
         } else {
             return true;
         }
