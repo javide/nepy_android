@@ -13,14 +13,15 @@ package com.davidebaj.nepy.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.davidebaj.nepy.MainActivity;
 import com.davidebaj.nepy.R;
+import com.davidebaj.nepy.Settings;
 import com.davidebaj.nepy.dao.Challenge;
 import com.davidebaj.nepy.dao.Quiz;
 
@@ -33,6 +34,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "QuizFragment";
     private String title;
+    private static Settings settings;
     Button startButton;
 
     public static QuizFragment newInstance(String title) {
@@ -49,6 +51,13 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.quiz_home, container, false);
         view.setClickable(true);
+
+        settings = Settings.buildSettings(getContext());
+
+        TextView textView = (TextView) view.findViewById(R.id.score_summary);
+        String scoreSummary = "\n" + MainActivity.resources.getProperty("quiz.HIGHEST_SCORES") + " " + settings.getHighestScore() + "\n\n"
+                + MainActivity.resources.getProperty("quiz.LAST_SCORES") + " " + settings.getLastScore();
+        textView.setText(scoreSummary);
 
         startButton = (Button) view.findViewById(R.id.StartQuiz);
         startButton.setText(MainActivity.resources.getProperty("label.START_QUIZ_BUTTON"));
@@ -68,11 +77,10 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
-        Log.d(TAG, "Clicked start quiz button");
-
         Quiz quiz = Quiz.getInstance();
         List<Challenge> challenges = quiz.getQuizData();
-        //quiz.logQuizData();
+
+        //quiz.logQuizData(); // to debug the quiz
 
         Fragment fragment = ChallengeFragment.newInstance(challenges);
 

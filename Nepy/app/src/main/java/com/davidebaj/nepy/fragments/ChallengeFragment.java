@@ -23,9 +23,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.davidebaj.nepy.MainActivity;
 import com.davidebaj.nepy.R;
+import com.davidebaj.nepy.Settings;
 import com.davidebaj.nepy.dao.Challenge;
 import com.davidebaj.nepy.dao.Plant;
 
@@ -42,18 +44,21 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
     private static final String showOptions = MainActivity.resources.getProperty("quiz.SHOW_OPTIONS");
     private static final String hideOptions = MainActivity.resources.getProperty("quiz.HIDE_OPTIONS");
     private static final String nextChallenge = MainActivity.resources.getProperty("quiz.NEXT_CHALLENGE");
+    private static final String gameOver = MainActivity.resources.getProperty("quiz.GAME_OVER");
+    private Settings settings;
     public static final int GREEN = Color.rgb(96, 178, 67);
     public static final int RED = Color.rgb(226, 30, 53);
     private String title;
     private List<Challenge> challenges;
     private int counter = -1;
+    private TextView lastScoresIndicator;
     Button buttonGame;
     Button buttonOption1;
     Button buttonOption2;
     Button buttonOption3;
-    MediaPlayer mp_good;
-    MediaPlayer mp_bad;
-    int game_scores;
+    MediaPlayer mpGood;
+    MediaPlayer mpBad;
+    int gameScores;
     int attempts;
 
     /**
@@ -77,7 +82,11 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.challenge, container, false);
         view.setClickable(true);
 
-        game_scores = 0;
+        settings = Settings.buildSettings(getContext());
+
+        lastScoresIndicator = (TextView) view.findViewById(R.id.lastscores_indicator);
+
+        gameScores = 0;
         attempts = 0;
 
         buttonOption1 = (Button) view.findViewById(R.id.buttonOption1);
@@ -90,18 +99,18 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
         buttonOption3.setOnClickListener(this);
         buttonGame.setOnClickListener(this);
 
-        mp_good = MediaPlayer.create(getContext(), R.raw.correct);
-        mp_bad = MediaPlayer.create(getContext(), R.raw.wrong);
+        mpGood = MediaPlayer.create(getContext(), R.raw.correct);
+        mpBad = MediaPlayer.create(getContext(), R.raw.wrong);
 
         try {
-            mp_good.prepare();
-            mp_bad.prepare();
+            mpGood.prepare();
+            mpBad.prepare();
         } catch (IOException e) {
             Log.e(TAG, "Failed to find sound files: " + e.getMessage());
         } catch (IllegalStateException e) {
             Log.e(TAG, "Failed to load sounds: " + e.getMessage());
         }
-
+        updateScores();
         return view;
     }
 
@@ -193,6 +202,9 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
             } else if (buttonGame.getText().equals(nextChallenge)) {
 
                 showNewChallenge();
+
+            } else if (buttonGame.getText().equals(gameOver)) {
+                // if label "Game over" then do nothing
             }
 
         } else {
@@ -281,59 +293,65 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
                     badFeedback();
                 }
             }
+
+            updateScores();
+
+            if (!isGameOver()) {
+                buttonGame.setText(nextChallenge);
+            } else {
+                buttonGame.setText(gameOver);
+            }
         }
-    }
-
-    private void goodFeedback() {
-
-        if (isSoundOn()) {
-            // play good sound
-            mp_good = MediaPlayer.create(getContext(), R.raw.correct);
-            mp_good.start();
-        }
-
-        attempts = attempts + 1;
-        game_scores = game_scores + 1;
-
-      //  update_scores();
-
-        if (!isGameOver()) {
-            buttonGame.setText(nextChallenge);
-        }
-    }
-
-    private void badFeedback() {
-        if (isSoundOn()) {
-            // play bad sound
-            mp_bad = MediaPlayer.create(getContext(), R.raw.wrong);
-            mp_bad.start();
-        }
-        attempts = attempts + 1;
-
-      //  update_scores();
-
-        if (!isGameOver()) {
-            buttonGame.setText(nextChallenge);
-        }
-
-    }
-
-    private boolean isSoundOn() {
-
-        /*
-        String soundKey = "com.davidebaj.nepy.sound";
-        SharedPreferences prefs = this.getSharedPreferences("com.davidebaj.nepy", Context.MODE_PRIVATE);
-
-        int sound = prefs.getInt(soundKey, 1);
-
-        return (sound == 1);
-        */
-
-        return true;
     }
 
     /**
-     * Has the user exhausted all the challenges?
+     * Play successful sound and update the scores accordingly
+     */
+    private void goodFeedback() {
+
+        if (settings.isSoundOn()) {
+            // play good sound
+            mpGood = MediaPlayer.create(getContext(), R.raw.correct);
+            mpGood.start();
+        }
+
+        attempts = attempts + 1;
+        gameScores = gameScores + 1;
+    }
+
+    /**
+     * Play unsuccessful sound and update the scores accordingly
+     */
+    private void badFeedback() {
+
+        if (settings.isSoundOn()) {
+            // play bad sound
+            mpBad = MediaPlayer.create(getContext(), R.raw.wrong);
+            mpBad.start();
+        }
+
+        attempts = attempts + 1;
+    }
+
+    /**
+     * Updates the score display and record scores
+     */
+    private void updateScores() {
+
+        String gameScoreIndicator = MainActivity.resources.getProperty("quiz.ACTUAL_SCORES") +
+                " " + gameScores + MainActivity.resources.getProperty("quiz.SCORE_SEPARATOR") + attempts;
+
+        lastScoresIndicator.setText(gameScoreIndicator);
+
+        settings.setLastScore(gameScores);
+
+        if (gameScores > settings.getHighestScore()) {
+            settings.setHighestScore(gameScores);
+        }
+    }
+
+    /**
+     * Has the user completed all the challenges?
      * @return - boolean
      */
     private boolean isGameOver() {

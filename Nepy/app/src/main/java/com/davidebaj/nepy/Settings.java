@@ -20,8 +20,12 @@ public class Settings {
 
     private static final String TAG = "Settings";
     private static final String sharedPreferenceFilename = "com.davidebaj.nepy.shared_prefs";
-    public static final String soundKey = "com.davidebaj.nepy.sound";
+    private static final String soundKey = "com.davidebaj.nepy.sound";
+    private static final String highestScoreKey = "com.davidebaj.nepy.highestScore";
+    private static final String lastScoreKey = "com.davidebaj.nepy.lastScore";
     private static final int DEFAULT_SOUND = 1;
+    private static final int DEFAULT_HIGHEST_SCORE = 1;
+    private static final int DEFAULT_LAST_SCORE = 1;
     private static Settings settings;
     private static SharedPreferences sharedPreferences;
 
@@ -60,6 +64,22 @@ public class Settings {
      */
     public void setSound(boolean flag) {
         sharedPreferences.edit().putInt(soundKey, flag ? 1 : 0).commit();
+    }
+
+    public int getHighestScore() {
+        return sharedPreferences.getInt(highestScoreKey, DEFAULT_HIGHEST_SCORE);
+    }
+
+    public int getLastScore() {
+        return sharedPreferences.getInt(lastScoreKey, DEFAULT_LAST_SCORE);
+    }
+
+    public void setHighestScore(int highestScore) {
+        sharedPreferences.edit().putInt(highestScoreKey, highestScore).commit();
+    }
+
+    public void setLastScore(int lastScore) {
+        sharedPreferences.edit().putInt(lastScoreKey, lastScore).commit();
     }
 
 }
