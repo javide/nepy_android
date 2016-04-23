@@ -68,7 +68,7 @@ public class PlantArrayAdapter extends ArrayAdapter<Plant> {
 
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
-            Log.d(TAG, "iconFileName = " + iconFileName);
+            //Log.d(TAG, "iconFileName = " + iconFileName);
         }
 
         textView.setText(plants[index].getSpecies());

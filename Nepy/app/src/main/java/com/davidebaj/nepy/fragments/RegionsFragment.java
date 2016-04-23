@@ -13,7 +13,6 @@ package com.davidebaj.nepy.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.davidebaj.nepy.MainActivity;
-import com.davidebaj.nepy.adapters.PlantArrayAdapter;
 import com.davidebaj.nepy.R;
+import com.davidebaj.nepy.adapters.PlantArrayAdapter;
 import com.davidebaj.nepy.dao.Plant;
 
 import java.util.List;
@@ -119,7 +118,7 @@ public class RegionsFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
-        Log.d(TAG, "Clicked region:" + regionCode);
+        //Log.d(TAG, "Clicked region:" + regionCode);
 
         List<Plant> plantList = MainActivity.resources.getPlantsObj().getPlantsByRegion(regionCode);
         ArrayAdapter<Plant> adapter = new PlantArrayAdapter(getContext(), plantList.toArray(new Plant[plantList.size()]));

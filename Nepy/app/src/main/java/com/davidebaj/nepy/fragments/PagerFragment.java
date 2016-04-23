@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,7 @@ public class PagerFragment extends Fragment {
         PagerFragment f = new PagerFragment();
         f.plant = aPlant;
 
-        Log.d(TAG, "created new pagerFragment for " + aPlant.getSpecies());
+        //Log.d(TAG, "created new pagerFragment for " + aPlant.getSpecies());
         return f;
     }
 
@@ -95,7 +94,6 @@ public class PagerFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        Log.d(TAG, "onViewCreated for " + plant.getSpecies());
     }
 
     @Override

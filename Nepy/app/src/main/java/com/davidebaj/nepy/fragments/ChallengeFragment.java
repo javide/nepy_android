@@ -223,7 +223,7 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
             String correctAnswer = challenges.get(counter).getPlant().getSpecies();
 
             if (buttonOption1.getId() == v.getId()) {
-                Log.d(TAG, "Clicked button option 1");
+                //Log.d(TAG, "Clicked button option 1");
 
                 if (buttonOption1.getText().equals(correctAnswer)) {
                     // correct answer is in button 1
@@ -247,7 +247,7 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
                 }
 
             } else if (buttonOption2.getId() == v.getId()) {
-                Log.d(TAG, "Clicked button option 2");
+                //Log.d(TAG, "Clicked button option 2");
 
                 if (buttonOption2.getText().equals(correctAnswer)) {
                     // correct answer is in button 2
@@ -270,7 +270,7 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
                     badFeedback();
                 }
             } else if (buttonOption3.getId() == v.getId()) {
-                Log.d(TAG, "Clicked button option 3");
+                //Log.d(TAG, "Clicked button option 3");
 
                 if (buttonOption3.getText().equals(correctAnswer)) {
                     // correct answer is in button 3

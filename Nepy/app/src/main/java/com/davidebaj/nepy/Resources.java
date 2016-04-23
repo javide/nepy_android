@@ -56,7 +56,7 @@ public class Resources {
      */
     public static Resources getResources(Context aContext, String languageCodeStr) {
 
-        Log.d(TAG, "Creating object");
+        //Log.d(TAG, "Creating object");
         context = aContext;
 
         if (resources == null && (languageCode == null || !languageCode.equals(languageCodeStr))) {
@@ -76,7 +76,7 @@ public class Resources {
      */
     private static void parsePlantsFile() {
 
-        Log.d(TAG, "Parsing Plants file");
+        //Log.d(TAG, "Parsing Plants file");
 
         try {
             AssetManager assetManager = context.getAssets();
@@ -100,7 +100,7 @@ public class Resources {
      */
     private static void loadProperties() {
 
-        Log.d(TAG, "Loading translations");
+        //Log.d(TAG, "Loading translations");
         properties = new Properties();
 
         try {
@@ -112,7 +112,7 @@ public class Resources {
 
             while (propertyNames.hasMoreElements()) {
                 String propertyName = (String) propertyNames.nextElement();
-                Log.d(TAG, propertyName + " = " + properties.getProperty(propertyName));
+                //Log.d(TAG, propertyName + " = " + properties.getProperty(propertyName));
             }
 
         } catch (Exception e) {

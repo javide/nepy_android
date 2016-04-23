@@ -46,7 +46,7 @@ public class PhotoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Log.d(TAG, " on create view");
+        //Log.d(TAG, " on create view");
 
         return inflater.inflate(R.layout.photo, container, false);
     }
@@ -54,11 +54,11 @@ public class PhotoFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        Log.d(TAG, " on view created");
+        //Log.d(TAG, " on view created");
 
         String plantFileName = "img/plants/" + plant.getPlantFileName(Integer.toString(photoNum));
         AssetManager assetManager = getContext().getAssets();
-        Log.d(TAG, plantFileName);
+        //Log.d(TAG, plantFileName);
         try {
             InputStream inputStream = assetManager.open(plantFileName);
             ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
@@ -79,7 +79,7 @@ public class PhotoFragment extends Fragment {
 
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
-            Log.d(TAG, "iconFileName = " + plantFileName);
+            //Log.d(TAG, "iconFileName = " + plantFileName);
         }
     }
 

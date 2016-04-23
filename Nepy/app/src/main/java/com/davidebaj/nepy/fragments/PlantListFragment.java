@@ -63,9 +63,9 @@ public class PlantListFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int index, long id) {
 
-                Log.d(TAG, "Position ----> " + index);
+                //Log.d(TAG, "Position ----> " + index);
                 Plant plant = adapter.getItem(index);
-                Log.d(TAG, "Plant ----> " + plant.getSpecies());
+                //Log.d(TAG, "Plant ----> " + plant.getSpecies());
 
                 if (mCallbacks != null) {
                     mCallbacks.onListItemSelected(plant);
