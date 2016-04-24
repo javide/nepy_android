@@ -20,6 +20,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,12 +46,21 @@ public class Plants {
     }
 
     /**
+     * Sets a list of plants reordering them alphabetically
      *
      * @param plants
      * The plants
      */
     @JsonProperty("plants")
     public void setPlants(List<Plant> plants) {
+
+        Collections.sort(plants, new Comparator<Plant>() {
+            @Override
+            public int compare(Plant plant1, Plant plant2) {
+                return plant1.getSpecies().compareToIgnoreCase(plant2.getSpecies());
+            }
+        });
+
         this.plants = plants;
     }
 
