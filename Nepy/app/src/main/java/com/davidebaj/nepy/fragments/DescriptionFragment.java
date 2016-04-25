@@ -68,16 +68,21 @@ public class DescriptionFragment extends Fragment {
         html = html.replace("$title_altitude", res.getProperty("desc.ALTITUDE"));
         html = html.replace("$altitude", plant.getAltitude());
         html = html.replace("$metre", res.getProperty("desc.METRE"));
-        html = html.replace("$title_field_notes", res.getProperty("desc.FIELD_NOTES"));
-        html = html.replace("$field_notes", plant.getFieldNotes());
+
+        String fieldNotesTitle = "";
+        String fieldNotes = plant.getFieldNotes();
+        if (!fieldNotes.trim().equals("")) {
+            fieldNotesTitle = res.getProperty("desc.FIELD_NOTES");
+        }
+        html = html.replace("$title_field_notes", fieldNotesTitle);
+        html = html.replace("$field_notes", fieldNotes);
 
         WebView webView = (WebView) getView().findViewById(R.id.webView);
-        webView.setBackgroundColor(Color.BLACK);
-        webView.loadData(html, "text/html; charset=UTF-8", null);
 
-        //TODO: to remote error "Should not happen: no rect-based-test nodes found" you need to subclass webview and call
-        // webview.onScrollChanged(webview.getScrollX(), webview.getScrollY(),webview.getScrollX(), webview.getScrollY());
+        if (webView != null) {
+            webView.setBackgroundColor(Color.BLACK);
+            webView.loadData(html, "text/html; charset=UTF-8", null);
+        }
     }
-
 
 }
