@@ -2039,6 +2039,21 @@
       "distribution": "Nepenthes vogelii occurs across the highlands of Sarawak, southern Sabah and West Kalimantan.",
       "altitude": "1000-1500",
       "field_notes": ""
+    },
+    {
+      "id": 137,
+      "species": "N. barcelonae",
+      "img_credit": "Alastair Robinson",
+      "img_credit_2": "Alastair Robinson",
+      "pitcher_type": "upper",
+      "pitcher_type_2": "lower",
+      "regions": 7,
+      "pronunciation_1": "bɑːrsəˈloʊn.aɪ",
+      "pronunciation_2": "bar-SA-lone-eye",
+      "range": "This species grows mainly as a terrestrial upright to scrambling shrub in summit scrub, but also less commonly as an epiphyte within the shaded conditions of taller trees.",
+      "distribution": "Nepenthes barcelonae is known only from the Central Sierra Madre range of Luzon where it was first collected in 2006 by Ulysses Ferreras and Leonardo Co.",
+      "altitude": "1550-1900",
+      "field_notes": ""
     }
   ]
 }
