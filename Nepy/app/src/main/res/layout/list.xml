@@ -9,11 +9,12 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:clickable="true"
-        android:divider="#4a4a4a"
         android:drawSelectorOnTop="false"
         android:fastScrollAlwaysVisible="true"
         android:visibility="visible"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        android:divider="#eaeaea"
+        android:dividerHeight="1dp"/>
 
 </LinearLayout>
 
