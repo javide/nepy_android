@@ -14,10 +14,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
 @JsonPropertyOrder({
@@ -335,26 +331,6 @@ public class Plant {
         return parts[1] + "_" + photoNum + ".jpg";
     }
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
 
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(id).append(species).append(imgCredit).append(imgCredit2).append(pitcherType).append(pitcherType2).append(regions).append(pronunciation1).append(pronunciation2).append(range).append(distribution).append(altitude).append(fieldNotes).toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Plant) == false) {
-            return false;
-        }
-        Plant rhs = ((Plant) other);
-        return new EqualsBuilder().append(id, rhs.id).append(species, rhs.species).append(imgCredit, rhs.imgCredit).append(imgCredit2, rhs.imgCredit2).append(pitcherType, rhs.pitcherType).append(pitcherType2, rhs.pitcherType2).append(regions, rhs.regions).append(pronunciation1, rhs.pronunciation1).append(pronunciation2, rhs.pronunciation2).append(range, rhs.range).append(distribution, rhs.distribution).append(altitude, rhs.altitude).append(fieldNotes, rhs.fieldNotes).isEquals();
-    }
 
 }

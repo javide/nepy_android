@@ -14,10 +14,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -116,28 +112,6 @@ public class Plants {
         Collections.sort(sortedAuthors);
 
         return sortedAuthors;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(plants).toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Plants) == false) {
-            return false;
-        }
-        Plants rhs = ((Plants) other);
-        return new EqualsBuilder().append(plants, rhs.plants).isEquals();
     }
 
 }
