@@ -37,12 +37,12 @@ import com.davidebaj.nepy.fragments.RegionsFragment;
 import com.davidebaj.nepy.fragments.SettingsFragment;
 
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, PlantListFragment.Callbacks {
 
     private static final String TAG = "MainActivity";
+    private static final String languageCode = "en";
     public static Resources resources;
     private Fragment fragment;
     private PagerFragment pagerFragment;
@@ -74,13 +74,15 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        resources = Resources.getResources(getApplicationContext(), Locale.getDefault().getLanguage());
+        // for now the only supported language is English
+        // Locale.getDefault().getLanguage();
+        resources = Resources.getResources(getApplicationContext(), languageCode);
 
         // default fragment
         fragment = getAllSpeciesFragment();
@@ -174,6 +176,12 @@ public class MainActivity extends AppCompatActivity
      * @return - a PlantListFragment fragment
      */
     private PlantListFragment getAllSpeciesFragment() {
+
+        // just in case
+        if (resources == null) {
+            resources = Resources.getResources(getApplicationContext(), languageCode);
+        }
+
         List<Plant> plantList = resources.getPlantsObj().getPlants();
         ArrayAdapter<Plant> adapter = new PlantArrayAdapter(this, plantList.toArray(new Plant[plantList.size()]));
         return PlantListFragment.newInstance(resources.getProperty("label.ALL_SPECIES"), adapter);

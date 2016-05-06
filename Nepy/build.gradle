@@ -4,6 +4,9 @@ buildscript {
     repositories {
         jcenter()
     }
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation"
+    }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0'
 
