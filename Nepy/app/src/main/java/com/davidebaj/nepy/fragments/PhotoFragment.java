@@ -74,7 +74,8 @@ public class PhotoFragment extends Fragment {
             }
 
             if (imageCredit != null && !imageCredit.equals("")) {
-                authorTextView.setText(" " + MainActivity.resources.getProperty("label.IMAGE_CREDIT") + " " + imageCredit);
+                String imgCreditStr = " " + MainActivity.resources.getProperty("label.IMAGE_CREDIT") + " " + imageCredit;
+                authorTextView.setText(imgCreditStr);
             }
 
         } catch (Exception e) {

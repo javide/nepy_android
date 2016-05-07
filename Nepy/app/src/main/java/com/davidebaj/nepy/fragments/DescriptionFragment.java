@@ -77,7 +77,7 @@ public class DescriptionFragment extends Fragment {
         html = html.replace("$title_field_notes", fieldNotesTitle);
         html = html.replace("$field_notes", fieldNotes);
 
-        WebView webView = (WebView) getView().findViewById(R.id.webView);
+        WebView webView = (WebView) getActivity().findViewById(R.id.webView);
 
         if (webView != null) {
             webView.setBackgroundColor(Color.BLACK);

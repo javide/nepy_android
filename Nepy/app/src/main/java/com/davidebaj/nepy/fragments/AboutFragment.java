@@ -71,9 +71,12 @@ public class AboutFragment extends Fragment {
                 .replace("$__application_id", getContext().getString(R.string.app_name));
 
         WebView webView = (WebView) getActivity().findViewById(R.id.about_view);
-        webView.setBackgroundColor(Color.BLACK);
-        webView.getSettings().setAllowFileAccess(true);
-        webView.loadDataWithBaseURL(baseUrl, content, null, "utf-8", null);
+
+        if (webView != null) {
+            webView.setBackgroundColor(Color.BLACK);
+            webView.getSettings().setAllowFileAccess(true);
+            webView.loadDataWithBaseURL(baseUrl, content, null, "utf-8", null);
+        }
     }
 
 }

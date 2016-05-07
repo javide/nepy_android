@@ -23,7 +23,6 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -108,12 +107,14 @@ public class Resources {
             InputStream inputStream = assetManager.open(languageCode + "/tx.properties");
             properties.load(inputStream);
 
+            /*
+            // debugging
             Enumeration propertyNames = properties.propertyNames();
-
             while (propertyNames.hasMoreElements()) {
                 String propertyName = (String) propertyNames.nextElement();
-                //Log.d(TAG, propertyName + " = " + properties.getProperty(propertyName));
+                Log.d(TAG, propertyName + " = " + properties.getProperty(propertyName));
             }
+            */
 
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());

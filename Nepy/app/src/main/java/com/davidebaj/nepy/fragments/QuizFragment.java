@@ -34,7 +34,6 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "QuizFragment";
     private String title;
-    private static Settings settings;
     Button startButton;
 
     public static QuizFragment newInstance(String title) {
@@ -52,7 +51,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.quiz_home, container, false);
         view.setClickable(true);
 
-        settings = Settings.buildSettings(getContext());
+        Settings settings = Settings.buildSettings(getContext());
 
         TextView textView = (TextView) view.findViewById(R.id.score_summary);
         String scoreSummary = "\n" + MainActivity.resources.getProperty("quiz.HIGHEST_SCORES") + " " + settings.getHighestScore() + "\n\n"
