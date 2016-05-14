@@ -32,6 +32,7 @@ public class PagerFragment extends Fragment {
 
     private static final String TAG = "PagerFragment";
     private Plant plant;
+    ViewPager pager;
 
     public static PagerFragment newInstance(Plant aPlant) {
         PagerFragment f = new PagerFragment();
@@ -55,15 +56,33 @@ public class PagerFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.pager, container, false);
 
-        ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
+        pager = (ViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(mAdapter);
+
+        setOnPageChangeListener(plant);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+
+    private void setOnPageChangeListener(final Plant aPlant) {
+
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             private int currentPosition;
             private Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-            private String species = plant.getSpecies();
-            private String pitcherType1 = species + " (" + plant.getPitcherType() + ")";
-            private String pitcherType2 = species + " (" + plant.getPitcherType2() + ")";
+            private String species = aPlant.getSpecies();
+            private String pitcherType1 = species + " (" + aPlant.getPitcherType() + ")";
+            private String pitcherType2 = species + " (" + aPlant.getPitcherType2() + ")";
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -88,16 +107,5 @@ public class PagerFragment extends Fragment {
                 }
             }
         });
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 }

@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:id="@+id/quizHomePhoto"
         android:layout_gravity="center_horizontal"
-        android:contentDescription="Quiz home photo"
+        android:contentDescription="@string/quiz_home_photo"
         android:background="@drawable/quiz_home" />
 
     <TextView

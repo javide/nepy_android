@@ -17,7 +17,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,14 +101,6 @@ public class ChallengeFragment extends Fragment implements View.OnClickListener 
         mpGood = MediaPlayer.create(getContext(), R.raw.correct);
         mpBad = MediaPlayer.create(getContext(), R.raw.wrong);
 
-        try {
-            mpGood.prepare();
-            mpBad.prepare();
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to find sound files: " + e.getMessage());
-        } catch (IllegalStateException e) {
-            Log.e(TAG, "Failed to load sounds: " + e.getMessage());
-        }
         updateScores();
         return view;
     }
